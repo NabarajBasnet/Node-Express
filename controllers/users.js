@@ -21,6 +21,12 @@ const getUsers = (req, res) => {
 //@access public
 
 const postUsers = (req, res) => {
+    console.log("Request Body is :",req.body)
+    const {name} = req.body;
+    if(!name){
+        res.status(400);
+        throw new Error('Body is empty!')
+    }
     res.status(200).json(users);
 }
 
