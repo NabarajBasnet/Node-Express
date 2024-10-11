@@ -21,13 +21,18 @@ const getUsers = (req, res) => {
 //@access public
 
 const postUsers = (req, res) => {
-    console.log("Request Body is :",req.body)
-    const {name} = req.body;
-    if(!name){
-        res.status(400);
-        throw new Error('Body is empty!')
+
+    console.log('Request Body: ', req.body);
+    const { name } = req.body;
+    if (!name) {
+        res.status(404)
+        throw new Error('Name is required!')
     }
-    res.status(200).json(users);
+    else {
+        res.status(200).json({
+            message: 'User created'
+        })
+    }
 }
 
 
